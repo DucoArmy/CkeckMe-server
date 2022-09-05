@@ -1,16 +1,14 @@
 import express from 'express'
 
 import {
-    UserIN,
-    UserOUT,
-    test
+    UserGet,
+    UserSet
 } from '../controllers/mainController'
 // import { protectedMiddleware } from '../middlewares'
 
 const mainRouter = express.Router()
 
-mainRouter.post('/in', UserIN)
-mainRouter.post('/out', UserOUT)
-mainRouter.post('/test', test)
+mainRouter.get('/get', UserGet)
+mainRouter.post('/set', UserSet)
 
 export default mainRouter
