@@ -39,19 +39,14 @@ export const getAttend = (id) => {
             else {
                 resolve(result[0].isAttend)
             }
-           
-            // const getResult = (err, result, fields) => {
-            //     if(err) {
-            //         reject(err)
-            //     }
-            //     else {
-            //         resolve(result)
-            //     }
-            // }
-            // db.query(result.length === 1 ? 
-            //     `UPDATE attendance SET isAttend = ${value} WHERE memberId = ${id};` :
-            //     `INSERT INTO attendance value(${id}, ${value});`,
-            // getResult)
+        })
+    })
+}
+export const getAllAttend = () => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT * from attendance;`,
+        (err, result, fields) => {
+            resolve(result)
         })
     })
 }
