@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "npx nodemon --exec babel-node src/init.js"
+    "dev": "npx nodemon --exec babel-node src/init.js",
+    "start": "npx --exec babel-node src/init.js"
   },
   "keywords": [],
   "author": "",
@@ -17,8 +18,7 @@
     "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.1",
-    "nodemailer": "^6.7.3",
-    "pug": "^3.0.2"
+    "nodemailer": "^6.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",

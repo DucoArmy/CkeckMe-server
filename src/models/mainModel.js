@@ -28,7 +28,7 @@ export const InsertUser = (user) => {
         })
     })
 }
-export const getAttend = (id) => {
+export const getAttendAsId = (id) => {
     return new Promise((resolve, reject) => {
         db.query(`SELECT isAttend from attendance where memberId = ${id};`,
         (err, result, fields) => {
@@ -42,7 +42,23 @@ export const getAttend = (id) => {
         })
     })
 }
-export const getAllAttend = () => {
+export const getAttendAsName = (name) => {
+    return new Promise((resolve, reject) => {
+        db.query(`select attendance.isAttend from attendance 
+                LEFT OUTER JOIN member on attendance.memberId = member.id 
+                where member.name = "${name}";`,
+        (err, result, fields) => {
+            if(result.length != 1) {
+                db.query(`INSERT INTO attendance value(${id}, 0);`),
+                resolve(0)
+            }
+            else {
+                resolve(result[0].isAttend)
+            }
+        })
+    })
+}
+export const getAttendAll = () => {
     return new Promise((resolve, reject) => {
         db.query(`SELECT * from attendance;`,
         (err, result, fields) => {
@@ -53,7 +69,7 @@ export const getAllAttend = () => {
 
 export const setAttend = (id, value) => {
     return new Promise((resolve, reject) => {
-        db.query(`SELECT id from member where id = ${id};`,
+        db.query(`SELECT memberId from attendance where memberId = ${id};`,
         (err, result, fields) => {
             const getResult = (err, result, fields) => {
                 if(err) {
@@ -63,6 +79,7 @@ export const setAttend = (id, value) => {
                     resolve(result)
                 }
             }
+            console.log(result.length)
             db.query(result.length === 1 ? 
                 `UPDATE attendance SET isAttend = ${value} WHERE memberId = ${id};` :
                 `INSERT INTO attendance value(${id}, ${value});`,

@@ -1,7 +1,8 @@
 import express from 'express'
 import session from 'express-session'
 
-import mainRouter from './routers/mainRouter'
+import attendRouter from './routers/attendRouter'
+import memberRouter from './routers/memberRouter'
 
 const app = express()
 
@@ -17,5 +18,7 @@ app.use(
   })
 )
 
-app.use('/main', mainRouter)
+app.use('/member', memberRouter)
+app.use('/attend', attendRouter)
+
 export default app
